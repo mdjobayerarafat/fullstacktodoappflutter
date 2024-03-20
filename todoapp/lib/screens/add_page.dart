@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -44,14 +46,14 @@ class _AddTodoPageState extends State<AddTodoPage> {
           ),
           const SizedBox(height: 20,),
           ElevatedButton(
-            onPressed: (){}, 
+            onPressed: submitData, 
           child: const Text('Submit'),
           )
         ],
       ),
     );
   }
-  void submitData(){
+  Future <void> submitData()  async {
     //get data 
     final title = titleControler;
     final description = descriptionControler;
@@ -66,6 +68,33 @@ class _AddTodoPageState extends State<AddTodoPage> {
 final url = 'http://127.0.0.1:8000/todo';
 final uri = Uri.parse(url);
 http.post(uri);
+final response = await http.post(uri, body:jsonDecode(body as String),
+ headers: {
+  'Content-Type': 'application/json'
+}
+
+);
+if ( response.statusCode == 201){
+  titleControler.text='';
+  descriptionControler.text='';
+  priorityControler.text='';
+  
+  showSuccessMassage('Creation Success');
+} else {
+  
+  showErrorMassage('Creation Failed');
+}
+
+
 
   }
+  void showSuccessMassage(String massage){
+  final snackBar = SnackBar(content: Text(massage));
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
+void showErrorMassage(String massage){
+  final snackBar = SnackBar(content: Text(massage));
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/screens/add_page.dart';
+import 'package:http/http.dart' as http;
 
 class TodoListPage extends StatefulWidget {
   const TodoListPage({super.key});
@@ -28,4 +29,11 @@ class _TodoListPageState extends State<TodoListPage> {
       );
       Navigator.push(context, route);
   }
+  //API GET
+Future <void> fetchTodo(){
+  final url = 'http://127.0.0.1:8000/';
+  final uri = Uri.parse(url);
+  final response = http.get(uri);
+}
+
 }
