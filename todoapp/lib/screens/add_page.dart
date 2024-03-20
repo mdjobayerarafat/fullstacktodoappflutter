@@ -65,7 +65,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
   "complete": false,
 };
 //submit data to the server
-final url = 'http://127.0.0.1:8000/todo';
+final url = 'http://127.0.0.1:8000/api/tasks/';
 final uri = Uri.parse(url);
 http.post(uri);
 final response = await http.post(uri, body:jsonDecode(body as String),
