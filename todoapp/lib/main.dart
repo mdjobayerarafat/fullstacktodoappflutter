@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:todoapp/screens/todo_list.dart';
+import 'package:todoapp/todo.dart';
+
+
 
 void main(){
   runApp(const MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp( 
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: TodoListPage(),
+      home: const HomeView(),
 
     );
   }
