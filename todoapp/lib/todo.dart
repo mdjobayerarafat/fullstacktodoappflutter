@@ -37,6 +37,8 @@ class HomeView extends StatelessWidget {
                     
                     Text(todo[index].title, style: const TextStyle(fontSize: 20),),
                     Text(todo[index].description),
+                    Text(todo[index].priority),
+                     //Text(todo[index].priority as String ),
                     
                     
                   ],

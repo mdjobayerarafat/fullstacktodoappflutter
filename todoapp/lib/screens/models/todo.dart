@@ -8,30 +8,32 @@ class Todo {
     String title;
     int id;
     String description;
-    bool complete;
-    int priority;
+    //String complete;
+    String priority;
 
     Todo({
         required this.title,
         required this.id,
         required this.description,
-        required this.complete,
+        //required this.complete,
         required this.priority,
     });
 
     factory Todo.fromJson(Map<dynamic, dynamic> json) => Todo(
         title: json["title"],
+       // id: int.parse(json['id']),
         id: json["id"],
         description: json["description"],
-        complete: json["complete"],
-        priority: json["priority"],
+       // complete: json["complete"],
+       priority: json["priority"],
+        //priority: int.parse(json['priority']),
     );
 
     Map<dynamic, dynamic> toJson() => {
         "title": title,
         "id": id,
         "description": description,
-        "complete": complete,
+        //"complete": complete,
         "priority": priority,
     };
 }
